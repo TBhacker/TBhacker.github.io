@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>二维码生成示例</title>
-    <script src="business_card.html"></script>
+    <title>个人名片二维码</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
     <div id="qrcode"></div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var data = 'yyvideo_multi_dnn';
+            var data = 'business_card.html'; // 你的个人名片网页URL
             var qrcodeElement = document.getElementById('qrcode');
             var qrcode = new QRCode(qrcodeElement, {
                 text: data,
@@ -22,4 +22,5 @@
         });
     </script>
 </body>
+</html>
 </html>
