@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>二维码生成</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.0/build/qrcode.min.js"></script>
     <style>
-        body, html {
+        html, body {
             height: 100%;
             margin: 0;
             display: flex;
@@ -13,26 +15,39 @@
             justify-content: center;
             background-color: #f0f0f0;
         }
+        #qrcode-container {
+            width: 60vw; /* Viewport Width 的 60% */
+            height: 60vh; /* Viewport Height 的 60% */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff; /* 你可以设置二维码背景颜色 */
+            border: 1px solid #cccccc; /* 你可以设置边框颜色和宽度 */
+        }
         #qrcode {
-            width: 256px;
-            height: 256px;
+            /* 二维码自身的大小将根据容器大小自动调整，因此不需要明确设置宽度和高度 */
         }
     </style>
 </head>
 <body>
-    <div id="qrcode"></div>
+    <div id="qrcode-container">
+        <div id="qrcode"></div>
+    </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var url = 'https://www.tbhacker.cn/business_card.html'; // 替换为你的business_card.html的完整URL
-            var qrcodeElement = document.getElementById('qrcode');
-            var qrcode = new QRCode(qrcodeElement, {
-                text: url,
-                width: 256,
-                height: 256,
-                colorDark: "#000000",
-                colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.H
-            });
+        // 替换成你想要生成二维码的URL或其他文本信息
+        var url = "https://www.example.com";
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: url,
+            width: 512, // 设置一个相对较大的初始值，以确保二维码清晰
+            height: 512, // 设置一个相对较大的初始值，以确保二维码清晰
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        // 根据容器大小调整二维码大小（可选，因为qrcode.js库会自动调整大小）
+        window.addEventListener('resize', function() {
+            // 这里可以根据需要调整二维码大小，但qrcode.js通常会自动处理
         });
     </script>
 </body>
